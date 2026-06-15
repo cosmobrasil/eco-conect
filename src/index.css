@@ -1,0 +1,66 @@
+@import url('https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800|space-grotesk:400,500,600,700|jetbrains-mono:400,500,600');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer utilities {
+  .tech-gradient {
+    background: radial-gradient(circle at top right, #1e293b 0%, #020617 70%);
+  }
+
+  .card-glass {
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+  }
+
+  .accent-border {
+    border-left: 3px solid #10b981;
+  }
+
+  .glass-card {
+    background-color: rgba(15, 23, 42, 0.6);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(51, 65, 85, 0.3);
+  }
+  
+  .glass-card-dark {
+    background-color: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+  }
+
+  .glow-green {
+    filter: drop-shadow(0 0 12px rgba(16, 185, 129, 0.35));
+  }
+}
+
+html {
+  font-family: var(--font-sans);
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #020617;
+  color: #e2e8f0;
+}
+
+/* Custom continuous node movement background animations */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.02);
+  }
+}
+
+.animated-glow-bg {
+  animation: pulseGlow 10s ease-in-out infinite;
+}
