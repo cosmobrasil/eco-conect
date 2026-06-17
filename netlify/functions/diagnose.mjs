@@ -1,4 +1,4 @@
-import { callOpenRouterDiagnose, generateMockDiagnostic } from '../../shared/diagnose.ts';
+import { callOpenRouterDiagnose, generateMockDiagnostic } from '../../shared/diagnose.mjs';
 
 export async function handler(event) {
   // Only allow POST
