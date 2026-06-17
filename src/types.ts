@@ -1,31 +1,49 @@
-export interface Sector {
-  id: string;
+export type SectorType = 'Construção Civil' | 'Laticínios & Alimentos' | 'Indústria de Metais' | 'Tecnologia & Eletrônicos' | 'Varejo & Embalagens' | 'Outro';
+
+export interface CompanyMetrics {
+  energyRenewable: number; // 0 to 100
+  waterRecirculation: number; // 0 to 100
+  wasteDiverted: number; // 0 to 100 (diverted from landfill)
+  rawMaterialCircular: number; // 0 to 100 (recycled or bio-based)
+  logisticsReversible: number; // 0 to 100 (reverse logistics implemented)
+}
+
+export interface CircularAssessmentInput {
+  companyName: string;
+  sector: SectorType;
+  customDetails?: string;
+  metrics: CompanyMetrics;
+}
+
+export interface ActionPlanStep {
+  step: string;
+  priority: 'Alta' | 'Média' | 'Baixa';
+  description: string;
+  expectedImpact: string;
+}
+
+export interface CircularOpportunity {
   name: string;
+  type: 'Simbiose Industrial' | 'Upcycling Industrial' | 'Logística Reversa' | 'Modelos de Negócio';
   description: string;
-  icon: string;
-  diagnostico: string;
-  residuos: string;
-  paineis: string;
-  potentialReduction: string; // e.g. "45%"
-  currentWasteVolume: number; // e.g. 120 (tons)
-  reusedQuantity: number; // e.g. 35 (tons)
-  aiRecommendations: string[];
+  potentialBenefit: string;
+  partnersType: string;
 }
 
-export interface Pillar {
-  id: number;
-  title: string;
-  short: string;
-  description: string;
-  iconName: string;
-  coords: { x: string; y: string }; // Hotspot positions on the picture (in percentage)
-}
-
-export interface ContentCard {
-  id: number;
-  type: "REPORT" | "FORESIGHT" | "TRENDS";
-  yearOrType: string;
-  title: string;
-  excerpt: string;
-  image: string;
+export interface AIDiagnostic {
+  maturityLevel: 'Iniciante' | 'Em Transição' | 'Avançado' | 'Líder Circular';
+  scores: {
+    strategy: number;    // 0-100
+    operations: number;  // 0-100
+    intelligence: number;// 0-100
+    overall: number;     // 0-100
+  };
+  diagnosisSummary: string;
+  isoCompliance: {
+    iso59004: string; // Principles & Guidelines analysis
+    iso59010: string; // Business models interpretation
+    iso59020: string; // Measurement & Assessment perspective
+  };
+  actionPlan: ActionPlanStep[];
+  circularOpportunities: CircularOpportunity[];
 }

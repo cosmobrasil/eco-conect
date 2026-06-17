@@ -1,6 +1,6 @@
 # Eco Conect
 
-Inteligência Estratégica para Empresas Circulares
+Plataforma de inteligência industrial para circularidade empresarial e territorial baseada nas normas ISO 59000.
 
 ## Run Locally
 
